@@ -66,22 +66,32 @@ def check_keyup_events(event, player):
         print('stop moving')
 
 
+def get_number_faceless_y(ai_settings, faceless_height):
+    """Determine the number of Faceless that fit in a column"""
+    available_space_y = ai_settings.screen_width - 2 * faceless_height
+    number_faceless_y = int(available_space_y / (2 * faceless_height))
+    return number_faceless_y
+
+
+def create_faceless(ai_settings, screen, faceless_horde, faceless_number):
+    """Create a Faceless and place it in the row"""
+    faceless = Faceless(ai_settings, screen)
+    faceless_height = faceless.rect.height
+    faceless.y = faceless_height + 2 * faceless_height * faceless_number
+    faceless.rect.y = faceless.y
+    faceless_horde.add(faceless)
+
+
 def create_horde(ai_settings, screen, faceless_horde):
     """Create a full horde of Faceless"""
     # Create a Faceless and find the number of Faceless in a column
     # Spacing between each Faceless is equal to one Faceless height
     faceless = Faceless(ai_settings, screen)
-    faceless_height = faceless.rect.height
-    available_space_y = ai_settings.screen_width - 2 * faceless_height
-    number_faceless_y = int(available_space_y / (2 * faceless_height))
+    number_faceless_y = get_number_faceless_y(ai_settings, faceless.rect.height)
 
     # Create the first row of Faceless
     for faceless_number in range(number_faceless_y):
-        # Create a Faceless and place it in the row
-        faceless = Faceless(ai_settings, screen)
-        faceless.y = faceless_height + 2 * faceless_height * faceless_number
-        faceless.rect.y = faceless.y
-        faceless_horde.add(faceless)
+        create_faceless(ai_settings, screen, faceless_horde, faceless_number)
 
 
 def update_screen(ai_settings, screen, player, faceless_horde, daggers):
@@ -90,8 +100,8 @@ def update_screen(ai_settings, screen, player, faceless_horde, daggers):
     for dagger in daggers.sprites():
         dagger.draw_dagger()
     player.blitme()
-    for faceless in faceless_horde:
-        faceless.loop_sprite()
+    # for faceless in faceless_horde:
+    #    faceless.loop_sprite()
     faceless_horde.draw(screen)
 
     left = screen.get_rect().left
