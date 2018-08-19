@@ -16,7 +16,10 @@ class Faceless(Sprite):
         ss_faceless = 'images/3DS - Fire Emblem Fates - Faceless.png'
 
         # faceless sprite row
-        self.sprite_loop = SpriteRow(6, 39, 23, 27, 10, ss_faceless)
+        self.moving_left = SpriteRow(6, 39, 23, 27, 10, ss_faceless)
+        self.moving_right = SpriteRow(4, 71, 23, 27, 9, ss_faceless)
+
+        self.sprite_loop = self.moving_right
 
         self.sprite_index = float(0)
 

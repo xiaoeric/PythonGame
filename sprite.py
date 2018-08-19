@@ -5,12 +5,7 @@ import cv2
 
 class Sprite(metaclass=ABCMeta):
     def __init__(self):
-        pass
-
-    @property
-    @abstractmethod
-    def sprites(self):
-        pass
+        self.sprites = []
 
     def get_list(self):
         pygame_imgs = []
