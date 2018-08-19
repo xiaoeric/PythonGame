@@ -65,12 +65,13 @@ def check_keyup_events(event, player):
         print('stop moving')
 
 
-def update_screen(ai_settings, screen, player, daggers):
+def update_screen(ai_settings, screen, player, faceless, daggers):
     screen.fill(ai_settings.bg_color)
     # Redraw all daggers behind player
     for dagger in daggers.sprites():
         dagger.draw_dagger()
     player.blitme()
+    faceless.blitme()
 
     left = screen.get_rect().left
 

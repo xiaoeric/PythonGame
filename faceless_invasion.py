@@ -3,6 +3,7 @@ from settings import Settings
 from player import Player
 import game_functions as gf
 from pygame.sprite import Group
+from faceless import Faceless
 
 
 def run_game():
@@ -15,6 +16,8 @@ def run_game():
     player = Player(ai_settings, screen)
     # Make a group to store daggers in
     daggers = Group()
+    # Make a Faceless
+    faceless = Faceless(ai_settings, screen)
 
     while True:
         gf.check_events(ai_settings, screen, player, daggers)
@@ -25,9 +28,10 @@ def run_game():
         for dagger in daggers.copy():
             if dagger.rect.right <= 0:
                 daggers.remove(dagger)
-        print(len(daggers))
+        # debug
+        # print(len(daggers))
 
-        gf.update_screen(ai_settings, screen, player, daggers)
+        gf.update_screen(ai_settings, screen, player, faceless, daggers)
 
 
 run_game()
