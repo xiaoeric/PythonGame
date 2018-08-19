@@ -16,8 +16,11 @@ def run_game():
     player = Player(ai_settings, screen)
     # Make a group to store daggers in
     daggers = Group()
-    # Make a Faceless
-    faceless = Faceless(ai_settings, screen)
+    # Make a Faceless group
+    faceless_horde = Group()
+
+    # Create the horde of faceless
+    gf.create_horde(ai_settings, screen, faceless_horde)
 
     while True:
         gf.check_events(ai_settings, screen, player, daggers)
@@ -31,7 +34,7 @@ def run_game():
         # debug
         # print(len(daggers))
 
-        gf.update_screen(ai_settings, screen, player, faceless, daggers)
+        gf.update_screen(ai_settings, screen, player, faceless_horde, daggers)
 
 
 run_game()
