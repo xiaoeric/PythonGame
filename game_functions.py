@@ -73,25 +73,35 @@ def get_number_faceless_y(ai_settings, faceless_height):
     return number_faceless_y
 
 
-def create_faceless(ai_settings, screen, faceless_horde, faceless_number):
+def get_number_cols(ai_settings, player_width, faceless_width):
+    """Determine the number of rows of aliens that fit on the screen"""
+    available_space_x = (ai_settings.screen_width - (3 * faceless_width) - player_width)
+    number_cols = int(available_space_x / (2 * faceless_width))
+    return number_cols
+
+
+def create_faceless(ai_settings, screen, faceless_horde, faceless_number, col_number):
     """Create a Faceless and place it in the row"""
     faceless = Faceless(ai_settings, screen)
     faceless_height = faceless.rect.height
     faceless.y = faceless_height + 2 * faceless_height * faceless_number
     faceless.rect.y = faceless.y
+    faceless.rect.x = faceless.rect.width + 2 * faceless.rect.width * col_number
     faceless_horde.add(faceless)
 
 
-def create_horde(ai_settings, screen, faceless_horde):
+def create_horde(ai_settings, screen, player, faceless_horde):
     """Create a full horde of Faceless"""
     # Create a Faceless and find the number of Faceless in a column
     # Spacing between each Faceless is equal to one Faceless height
     faceless = Faceless(ai_settings, screen)
     number_faceless_y = get_number_faceless_y(ai_settings, faceless.rect.height)
+    number_cols = get_number_cols(ai_settings, player.rect.width, faceless.rect.width)
 
-    # Create the first row of Faceless
-    for faceless_number in range(number_faceless_y):
-        create_faceless(ai_settings, screen, faceless_horde, faceless_number)
+    # Create the horde of Faceless
+    for col_number in range(number_cols):
+        for faceless_number in range(number_faceless_y):
+            create_faceless(ai_settings, screen, faceless_horde, faceless_number, col_number)
 
 
 def update_screen(ai_settings, screen, player, faceless_horde, daggers):

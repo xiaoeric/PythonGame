@@ -20,7 +20,7 @@ def run_game():
     faceless_horde = Group()
 
     # Create the horde of faceless
-    gf.create_horde(ai_settings, screen, faceless_horde)
+    gf.create_horde(ai_settings, screen, player, faceless_horde)
 
     while True:
         gf.check_events(ai_settings, screen, player, daggers)
