@@ -3,10 +3,13 @@ from settings import Settings
 from player import Player
 import game_functions as gf
 from pygame.sprite import Group
+from pygame.time import Clock
 from faceless import Faceless
 
 
 def run_game():
+    clock = Clock()
+
     pygame.init()
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
@@ -23,6 +26,10 @@ def run_game():
     gf.create_horde(ai_settings, screen, player, faceless_horde)
 
     while True:
+        clock.tick(60)
+        # dt = clock.tick()
+        # print(dt)
+
         gf.check_events(ai_settings, screen, player, daggers)
         player.update(ai_settings)
         daggers.update()
@@ -33,8 +40,11 @@ def run_game():
                 daggers.remove(dagger)
         # debug
         # print(len(daggers))
+        gf.update_horde(ai_settings, faceless_horde)
 
         gf.update_screen(ai_settings, screen, player, faceless_horde, daggers)
+
+        pygame.display.set_caption("FPS: %i" % clock.get_fps())
 
 
 run_game()

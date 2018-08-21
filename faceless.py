@@ -36,12 +36,27 @@ class Faceless(Sprite):
 
         # Store the Faceless' exact position
         self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+    def check_edges(self):
+        """Return True if Faceless is at edge of screen"""
+        screen_rect = self.screen.get_rect()
+        if self.rect.bottom >= screen_rect.bottom:
+            return True
+        elif self.rect.top <= 0:
+            return True
+
+    def update(self):
+        """Move the Faceless down or up"""
+        self.y += (self.ai_settings.faceless_speed_factor * self.ai_settings.horde_direction)
+        self.rect.y = self.y
+        self.loop_sprite()
 
     def loop_sprite(self):
         self.sprite_index += self.sprite_iter_speed
         if self.sprite_index >= 6:
             self.sprite_index = float(0)
-        self.image = self.get_image()
+        # self.image = self.get_image()
 
     def get_image(self):
         # gets current image in sprite row

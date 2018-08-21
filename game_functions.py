@@ -66,6 +66,22 @@ def check_keyup_events(event, player):
         print('stop moving')
 
 
+def check_horde_edges(ai_settings, faceless_horde):
+    """Respond appropriately if any Faceless have reached an edge"""
+    for faceless in faceless_horde.sprites():
+        if faceless.check_edges():
+            change_horde_direction(ai_settings, faceless_horde)
+            break
+
+
+def change_horde_direction(ai_settings, faceless_horde):
+    """Crawl the entire horde and change the horde's direction"""
+    for faceless in faceless_horde.sprites():
+        faceless.x += ai_settings.horde_crawl_speed
+        faceless.rect.x = faceless.x
+    ai_settings.horde_direction *= -1
+
+
 def get_number_faceless_y(ai_settings, faceless_height):
     """Determine the number of Faceless that fit in a column"""
     available_space_y = ai_settings.screen_width - 2 * faceless_height
@@ -102,6 +118,15 @@ def create_horde(ai_settings, screen, player, faceless_horde):
     for col_number in range(number_cols):
         for faceless_number in range(number_faceless_y):
             create_faceless(ai_settings, screen, faceless_horde, faceless_number, col_number)
+
+
+def update_horde(ai_settings, faceless_horde):
+    """
+    Check if the horde is at an edge
+    and then update the positions of all Faceless in the horde
+    """
+    check_horde_edges(ai_settings, faceless_horde)
+    faceless_horde.update()
 
 
 def update_screen(ai_settings, screen, player, faceless_horde, daggers):
