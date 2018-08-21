@@ -26,7 +26,7 @@ def run_game():
     gf.create_horde(ai_settings, screen, player, faceless_horde)
 
     while True:
-        clock.tick(60)
+        clock.tick(ai_settings.fps)
         # dt = clock.tick()
         # print(dt)
 
