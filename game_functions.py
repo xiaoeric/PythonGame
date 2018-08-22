@@ -84,7 +84,7 @@ def change_horde_direction(ai_settings, faceless_horde):
 
 def get_number_faceless_y(ai_settings, faceless_height):
     """Determine the number of Faceless that fit in a column"""
-    available_space_y = ai_settings.screen_width - 2 * faceless_height
+    available_space_y = ai_settings.screen_height - 2 * faceless_height
     number_faceless_y = int(available_space_y / (2 * faceless_height))
     return number_faceless_y
 

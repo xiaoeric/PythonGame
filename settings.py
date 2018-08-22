@@ -19,6 +19,6 @@ class Settings:
 
         # Faceless settings
         self.faceless_speed_factor = 1 * 60.0 / self.fps
-        self.horde_crawl_speed = 0.5 * 60.0 / self.fps
+        self.horde_crawl_speed = 10 * 60.0 / self.fps
         # horde direction of 1 represents down; -1 represents up
         self.horde_direction = 1

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0362c4d3-ec71-4c9e-99dd-9c349bad3534" name="Default" comment="Fixed fps to 60 fps, adjusted player animation accordingly. Somehow broke horde formation and Faceless animation.">
+    <list default="true" id="0362c4d3-ec71-4c9e-99dd-9c349bad3534" name="Default" comment="Speed settings can now automatically compensate for different fps limits.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faceless_invasion.py" beforeDir="false" afterPath="$PROJECT_DIR$/faceless_invasion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_functions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +15,12 @@
     <session id="-1567003840">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.45" value="2" />
+          <entry key="project.open.time.53" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.76" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -35,14 +35,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="8903" />
-          <entry key="txt" value="636" />
+          <entry key="py" value="8909" />
+          <entry key="txt" value="734" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="636" />
-          <entry key="Python" value="8903" />
+          <entry key="PLAIN_TEXT" value="734" />
+          <entry key="Python" value="8909" />
         </counts>
       </usages-collector>
     </session>
@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faceless_invasion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="28" column="35" lean-forward="true" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+            <state relative-caret-position="70">
+              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -61,19 +61,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="81" column="26" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
+            <state relative-caret-position="-490">
+              <caret line="86" column="49" selection-start-line="86" selection-start-column="49" selection-end-line="86" selection-end-column="49" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <marker date="1534832617311" expanded="true" signature="1625:4911" ph="..." />
-                <marker date="1534832617311" expanded="true" signature="2683:2925" ph="..." />
-                <marker date="1534832617311" expanded="true" signature="3282:3533" ph="..." />
-                <marker date="1534832617311" expanded="true" signature="3619:3982" ph="..." />
-                <marker date="1534832617311" expanded="true" signature="4044:4911" ph="..." />
-                <marker date="1534832617311" expanded="true" signature="4713:4911" ph="..." />
+                <marker date="1534908286166" expanded="true" signature="1625:4912" ph="..." />
+                <marker date="1534908286166" expanded="true" signature="2683:2925" ph="..." />
+                <marker date="1534908286166" expanded="true" signature="3283:3534" ph="..." />
+                <marker date="1534908286166" expanded="true" signature="3620:3983" ph="..." />
+                <marker date="1534908286166" expanded="true" signature="4045:4912" ph="..." />
+                <marker date="1534908286166" expanded="true" signature="4714:4912" ph="..." />
               </folding>
             </state>
           </provider>
@@ -82,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faceless.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="51" column="28" lean-forward="true" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
+            <state relative-caret-position="308">
+              <caret line="51" column="28" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <marker date="1534831917083" expanded="true" signature="104:109" ph="..." />
@@ -98,7 +98,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1226">
+            <state relative-caret-position="1666">
               <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -108,11 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="10" column="45" lean-forward="true" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+            <state relative-caret-position="391">
+              <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
               <folding>
                 <marker date="1534834156448" expanded="true" signature="15:17" ph="..." />
               </folding>
@@ -147,9 +147,9 @@
         <option value="$PROJECT_DIR$/spriterow.py" />
         <option value="$PROJECT_DIR$/sprite.py" />
         <option value="$PROJECT_DIR$/faceless.py" />
-        <option value="$PROJECT_DIR$/game_functions.py" />
         <option value="$PROJECT_DIR$/faceless_invasion.py" />
         <option value="$PROJECT_DIR$/settings.py" />
+        <option value="$PROJECT_DIR$/game_functions.py" />
       </list>
     </option>
   </component>
@@ -173,7 +173,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -185,6 +184,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -337,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534833549439</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Speed settings can now automatically compensate for different fps limits.">
+      <created>1534834231540</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1534834231540</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -366,7 +373,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49809885" visible="true" weight="0.3056266" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39897698" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49936628" weight="0.32992327" />
@@ -427,7 +434,8 @@
     <MESSAGE value="Refactored create_horde(). Disabled Faceless animation looping for the time being." />
     <MESSAGE value="Added multiple columns of Faceless enemies." />
     <MESSAGE value="Fixed fps to 60 fps, adjusted player animation accordingly. Somehow broke horde formation and Faceless animation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed fps to 60 fps, adjusted player animation accordingly. Somehow broke horde formation and Faceless animation." />
+    <MESSAGE value="Speed settings can now automatically compensate for different fps limits." />
+    <option name="LAST_COMMIT_MESSAGE" value="Speed settings can now automatically compensate for different fps limits." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/spritesheet.py" />
@@ -436,11 +444,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <marker date="1534655773162" expanded="true" signature="123:155" ph="..." />
-            <marker date="1534655773162" expanded="true" signature="352:386" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -448,11 +451,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="53">
           <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <marker date="1534534349598" expanded="true" signature="66:71" ph="..." />
-            <marker date="1534534349598" expanded="true" signature="156:165" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -460,9 +458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -470,35 +465,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="461">
           <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1666">
+          <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <marker date="1534539865853" expanded="true" signature="70:75" ph="..." />
-            <marker date="1534539865853" expanded="true" signature="176:185" ph="..." />
-            <marker date="1534539865853" expanded="true" signature="823:832" ph="..." />
+            <element signature="e#0#31#0" expanded="true" />
+            <marker date="1534537935034" expanded="true" signature="153:162" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game_functions.py">
+    <entry file="file://$PROJECT_DIR$/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="81" column="26" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
+        <state relative-caret-position="391">
+          <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <marker date="1534832617311" expanded="true" signature="1625:4911" ph="..." />
-            <marker date="1534832617311" expanded="true" signature="2683:2925" ph="..." />
-            <marker date="1534832617311" expanded="true" signature="3282:3533" ph="..." />
-            <marker date="1534832617311" expanded="true" signature="3619:3982" ph="..." />
-            <marker date="1534832617311" expanded="true" signature="4044:4911" ph="..." />
-            <marker date="1534832617311" expanded="true" signature="4713:4911" ph="..." />
+            <marker date="1534834156448" expanded="true" signature="15:17" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceless_invasion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/faceless.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="51" column="28" lean-forward="true" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
+        <state relative-caret-position="308">
+          <caret line="51" column="28" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <marker date="1534831917083" expanded="true" signature="104:109" ph="..." />
@@ -509,33 +513,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/player.py">
+    <entry file="file://$PROJECT_DIR$/game_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1226">
-          <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+        <state relative-caret-position="-490">
+          <caret line="86" column="49" selection-start-line="86" selection-start-column="49" selection-end-line="86" selection-end-column="49" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <marker date="1534537935034" expanded="true" signature="153:162" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceless_invasion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="28" column="35" lean-forward="true" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="45" lean-forward="true" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding>
-            <marker date="1534834156448" expanded="true" signature="15:17" ph="..." />
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1534908286166" expanded="true" signature="1625:4912" ph="..." />
+            <marker date="1534908286166" expanded="true" signature="2683:2925" ph="..." />
+            <marker date="1534908286166" expanded="true" signature="3283:3534" ph="..." />
+            <marker date="1534908286166" expanded="true" signature="3620:3983" ph="..." />
+            <marker date="1534908286166" expanded="true" signature="4045:4912" ph="..." />
+            <marker date="1534908286166" expanded="true" signature="4714:4912" ph="..." />
           </folding>
         </state>
       </provider>
