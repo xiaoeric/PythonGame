@@ -13,21 +13,21 @@ class Player:
 
         # filename for maid sprite sheet
         ss_maid = 'images/3DS - Fire Emblem Fates - Maid.png'
-        # ss_felicia = 'images/3DS - Fire Emblem Fates - Felicia.png'
+        ss_felicia = 'images/3DS - Fire Emblem Fates - Felicia.png'
 
         # TODO: refactor for better organization
         # maid body sprite rows
-        self.stationary_sprite = SpriteRow(7, 1660, 22, 24, 10, ss_maid)
+        self.stationary_body = SpriteRow(7, 1660, 22, 24, 10, ss_maid)
         self.moving_up_sprite = SpriteRow(7, 1792, 22, 24, 10, ss_maid)
         self.moving_down_sprite = SpriteRow(7, 1760, 22, 24, 10, ss_maid)
         self.moving_left_sprite = SpriteRow(7, 1698, 22, 24, 10, ss_maid)
         self.moving_right_sprite = SpriteRow(7, 1730, 22, 24, 10, ss_maid)
 
         # felicia head sprite rows
-        # self.stationary_head = SpriteRow(13, 8, 16, 15, 16, ss_felicia)
+        self.stationary_head = SpriteRow(13, 8, 16, 15, 16, ss_felicia)
 
         # felicia maid sprite rows
-        # self.stationary_sprite = SpritePlayer(self.stationary_head, self.stationary_body)
+        self.stationary_sprite = SpritePlayer(self.stationary_head, self.stationary_body)
 
         # stationary is default
         self.sprite_loop = self.stationary_sprite

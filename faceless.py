@@ -56,7 +56,7 @@ class Faceless(Sprite):
         self.sprite_index += self.sprite_iter_speed
         if self.sprite_index >= 6:
             self.sprite_index = float(0)
-        # self.image = self.get_image()
+        self.image = self.get_image()
 
     def get_image(self):
         # gets current image in sprite row
