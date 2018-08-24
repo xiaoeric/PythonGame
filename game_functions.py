@@ -133,18 +133,24 @@ def update_horde(ai_settings, faceless_horde):
 
 def update_daggers(ai_settings, screen, player, faceless_horde, daggers):
     """Update position of daggers and get rid of old daggers"""
-    # Check for any daggers that have hit Faceless
-    # If so, get rid of the dagger and the Faceless
-    collisions = pygame.sprite.groupcollide(daggers, faceless_horde, True, True)
     # Get rid of daggers that have disappeared
     for dagger in daggers.copy():
         if dagger.rect.right <= 0:
             daggers.remove(dagger)
 
+    check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde, daggers)
+
+
+def check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde, daggers):
+    """Respond to dagger-Faceless collisions"""
     if len(faceless_horde) == 0:
         #  Destroy existing daggers and create new horde
         daggers.empty()
         create_horde(ai_settings, screen, player, faceless_horde)
+
+    # Checking for collisions after checking for horde generation will delay respawning
+    # to the next loop, allowing the last Faceless sprite to disappear.
+    collisions = pygame.sprite.groupcollide(daggers, faceless_horde, True, True)
 
 
 def update_screen(ai_settings, screen, player, faceless_horde, daggers):
