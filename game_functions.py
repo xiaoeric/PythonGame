@@ -76,10 +76,12 @@ def check_horde_edges(ai_settings, faceless_horde):
 
 def change_horde_direction(ai_settings, faceless_horde):
     """Crawl the entire horde and change the horde's direction"""
-    for faceless in faceless_horde.sprites():
-        faceless.x += ai_settings.horde_crawl_speed
-        faceless.rect.x = faceless.x
     ai_settings.horde_direction *= -1
+    for faceless in faceless_horde.sprites():
+        # For some reason incrementing faceless.x by crawl_speed
+        # and then assigning faceless.x to faceless.rect.x will cause
+        # the entire horde to disappear except for one column
+        faceless.rect.x += ai_settings.horde_crawl_speed
 
 
 def get_number_faceless_y(ai_settings, faceless_height):
