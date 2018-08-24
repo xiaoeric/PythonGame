@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0362c4d3-ec71-4c9e-99dd-9c349bad3534" name="Default" comment="Implemented sprite collisions between daggers and Faceless enemies.">
+    <list default="true" id="0362c4d3-ec71-4c9e-99dd-9c349bad3534" name="Default" comment="Fixed issue where entire horde except a column disappears after touching the bottom.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceless_invasion.py" beforeDir="false" afterPath="$PROJECT_DIR$/faceless_invasion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_functions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,25 +38,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="9368" />
-          <entry key="txt" value="1050" />
+          <entry key="py" value="9735" />
+          <entry key="txt" value="1145" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1050" />
-          <entry key="Python" value="9368" />
+          <entry key="PLAIN_TEXT" value="1145" />
+          <entry key="Python" value="9735" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/faceless_invasion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="37" column="78" selection-start-line="37" selection-start-column="78" selection-end-line="37" selection-end-column="78" />
+            <state relative-caret-position="376">
+              <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -63,20 +64,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="79" column="37" lean-forward="true" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+            <state relative-caret-position="442">
+              <caret line="146" column="65" selection-start-line="146" selection-start-column="65" selection-end-line="146" selection-end-column="65" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <marker date="1535069785704" expanded="true" signature="1625:5435" ph="..." />
-                <marker date="1535069785704" expanded="true" signature="2683:3002" ph="..." />
-                <marker date="1535069785704" expanded="true" signature="3360:3611" ph="..." />
-                <marker date="1535069785704" expanded="true" signature="3697:4060" ph="..." />
-                <marker date="1535069785704" expanded="true" signature="4122:5435" ph="..." />
-                <marker date="1535069785704" expanded="true" signature="4791:5435" ph="..." />
-                <marker date="1535069785704" expanded="true" signature="5033:5435" ph="..." />
+                <marker date="1535070304076" expanded="true" signature="1625:5733" ph="..." />
+                <marker date="1535070304076" expanded="true" signature="2683:3090" ph="..." />
+                <marker date="1535070304076" expanded="true" signature="3448:3699" ph="..." />
+                <marker date="1535070304076" expanded="true" signature="3785:4148" ph="..." />
+                <marker date="1535070304076" expanded="true" signature="4210:5733" ph="..." />
+                <marker date="1535070304076" expanded="true" signature="4879:5733" ph="..." />
+                <marker date="1535070304076" expanded="true" signature="5150:5733" ph="..." />
               </folding>
             </state>
           </provider>
@@ -151,8 +152,8 @@
         <option value="$PROJECT_DIR$/sprite.py" />
         <option value="$PROJECT_DIR$/faceless.py" />
         <option value="$PROJECT_DIR$/settings.py" />
-        <option value="$PROJECT_DIR$/faceless_invasion.py" />
         <option value="$PROJECT_DIR$/game_functions.py" />
+        <option value="$PROJECT_DIR$/faceless_invasion.py" />
       </list>
     </option>
   </component>
@@ -361,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534909454885</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixed issue where entire horde except a column disappears after touching the bottom.">
+      <created>1535070006279</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1535070006279</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -389,7 +397,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49746513" visible="true" weight="0.3056266" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49683145" visible="true" weight="0.3056266" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39897698" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -397,7 +405,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49936628" weight="0.32992327" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49746513" weight="0.3286445" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50253487" side_tool="true" weight="0.3056266" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5031686" side_tool="true" weight="0.3056266" />
       <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49936628" weight="0.3286445" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -454,7 +462,8 @@
     <MESSAGE value="Speed settings can now automatically compensate for different fps limits." />
     <MESSAGE value="Fixed Faceless horde crawling. Game starts with a full horde and mysteriously disappears after they touch the bottom edge. Game continues with a single column." />
     <MESSAGE value="Implemented sprite collisions between daggers and Faceless enemies." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented sprite collisions between daggers and Faceless enemies." />
+    <MESSAGE value="Fixed issue where entire horde except a column disappears after touching the bottom." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue where entire horde except a column disappears after touching the bottom." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/spritesheet.py" />
@@ -484,16 +493,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="461">
           <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceless_invasion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="37" column="78" selection-start-line="37" selection-start-column="78" selection-end-line="37" selection-end-column="78" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -534,17 +533,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/game_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="79" column="37" lean-forward="true" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+        <state relative-caret-position="442">
+          <caret line="146" column="65" selection-start-line="146" selection-start-column="65" selection-end-line="146" selection-end-column="65" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <marker date="1535069785704" expanded="true" signature="1625:5435" ph="..." />
-            <marker date="1535069785704" expanded="true" signature="2683:3002" ph="..." />
-            <marker date="1535069785704" expanded="true" signature="3360:3611" ph="..." />
-            <marker date="1535069785704" expanded="true" signature="3697:4060" ph="..." />
-            <marker date="1535069785704" expanded="true" signature="4122:5435" ph="..." />
-            <marker date="1535069785704" expanded="true" signature="4791:5435" ph="..." />
-            <marker date="1535069785704" expanded="true" signature="5033:5435" ph="..." />
+            <marker date="1535070304076" expanded="true" signature="1625:5733" ph="..." />
+            <marker date="1535070304076" expanded="true" signature="2683:3090" ph="..." />
+            <marker date="1535070304076" expanded="true" signature="3448:3699" ph="..." />
+            <marker date="1535070304076" expanded="true" signature="3785:4148" ph="..." />
+            <marker date="1535070304076" expanded="true" signature="4210:5733" ph="..." />
+            <marker date="1535070304076" expanded="true" signature="4879:5733" ph="..." />
+            <marker date="1535070304076" expanded="true" signature="5150:5733" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceless_invasion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

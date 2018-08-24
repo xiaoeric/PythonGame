@@ -33,7 +33,7 @@ def run_game():
         gf.check_events(ai_settings, screen, player, daggers)
         player.update(ai_settings)
         daggers.update()
-        gf.update_daggers(faceless_horde, daggers)
+        gf.update_daggers(ai_settings, screen, player, faceless_horde, daggers)
         gf.update_horde(ai_settings, faceless_horde)
         gf.update_screen(ai_settings, screen, player, faceless_horde, daggers)
 

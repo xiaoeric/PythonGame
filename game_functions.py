@@ -131,7 +131,7 @@ def update_horde(ai_settings, faceless_horde):
     faceless_horde.update()
 
 
-def update_daggers(faceless_horde, daggers):
+def update_daggers(ai_settings, screen, player, faceless_horde, daggers):
     """Update position of daggers and get rid of old daggers"""
     # Check for any daggers that have hit Faceless
     # If so, get rid of the dagger and the Faceless
@@ -140,6 +140,11 @@ def update_daggers(faceless_horde, daggers):
     for dagger in daggers.copy():
         if dagger.rect.right <= 0:
             daggers.remove(dagger)
+
+    if len(faceless_horde) == 0:
+        #  Destroy existing daggers and create new horde
+        daggers.empty()
+        create_horde(ai_settings, screen, player, faceless_horde)
 
 
 def update_screen(ai_settings, screen, player, faceless_horde, daggers):
