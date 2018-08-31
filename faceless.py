@@ -1,9 +1,9 @@
 import pygame
-from pygame.sprite import Sprite
-from spriterow import SpriteRow
+from pygame.sprite import Sprite as PySprite
+from sprite import Sprite
 
 
-class Faceless(Sprite):
+class Faceless(PySprite):
     """A class to represent a single Faceless in the horde"""
 
     def __init__(self, ai_settings, screen):
@@ -16,8 +16,8 @@ class Faceless(Sprite):
         ss_faceless = 'images/3DS - Fire Emblem Fates - Faceless.png'
 
         # faceless sprite row
-        self.moving_left = SpriteRow(6, 39, 23, 27, 10, ss_faceless)
-        self.moving_right = SpriteRow(4, 71, 23, 27, 9, ss_faceless)
+        self.moving_left = Sprite.from_coord(6, 39, 23, 27, 10, ss_faceless)
+        self.moving_right = Sprite.from_coord(4, 71, 23, 27, 9, ss_faceless)
 
         self.sprite_loop = self.moving_right
 

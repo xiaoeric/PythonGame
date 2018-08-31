@@ -1,5 +1,6 @@
 from spriterow import SpriteRow
 from spriteplayer import SpritePlayer
+from sprite import Sprite
 
 # debug
 # import time
@@ -17,17 +18,17 @@ class Player:
 
         # TODO: refactor for better organization
         # maid body sprite rows
-        self.stationary_body = SpriteRow(7, 1660, 22, 24, 10, ss_maid)
-        self.moving_up_sprite = SpriteRow(7, 1792, 22, 24, 10, ss_maid)
-        self.moving_down_sprite = SpriteRow(7, 1760, 22, 24, 10, ss_maid)
-        self.moving_left_sprite = SpriteRow(7, 1698, 22, 24, 10, ss_maid)
-        self.moving_right_sprite = SpriteRow(7, 1730, 22, 24, 10, ss_maid)
+        self.stationary_sprite = Sprite.from_coord(7, 1660, 22, 24, 10, ss_maid)
+        self.moving_up_sprite = Sprite.from_coord(7, 1792, 22, 24, 10, ss_maid)
+        self.moving_down_sprite = Sprite.from_coord(7, 1760, 22, 24, 10, ss_maid)
+        self.moving_left_sprite = Sprite.from_coord(7, 1698, 22, 24, 10, ss_maid)
+        self.moving_right_sprite = Sprite.from_coord(7, 1730, 22, 24, 10, ss_maid)
 
         # felicia head sprite rows
-        self.stationary_head = SpriteRow(13, 8, 16, 15, 16, ss_felicia)
+        self.stationary_head = Sprite.from_coord(13, 8, 16, 15, 16, ss_felicia)
 
         # felicia maid sprite rows
-        self.stationary_sprite = SpritePlayer(self.stationary_head, self.stationary_body)
+        # self.stationary_sprite = SpritePlayer(self.stationary_head, self.stationary_body)
 
         # stationary is default
         self.sprite_loop = self.stationary_sprite

@@ -1,11 +1,22 @@
-from abc import ABCMeta, abstractmethod
 import pygame
 import cv2
 
 
-class Sprite(metaclass=ABCMeta):
-    def __init__(self):
-        self.sprites = []
+class Sprite:
+    def __init__(self, sprites=[]):
+        self.sprites = sprites
+
+    @classmethod
+    def from_coord(cls, col, row, width, height, gap, filename):
+        sprites = []
+        ss = cv2.imread(filename, cv2.IMREAD_UNCHANGED)  # spritesheet.spritesheet(filename)
+        for n in range(4):
+            current_col = (col + n * (width + gap))
+            sprites.append(ss[row:row + height, current_col:current_col + width])
+        for n in range(1, 3):
+            sprites.insert(4, sprites[n])
+
+        return cls(sprites)
 
     def get_list(self):
         pygame_imgs = []
