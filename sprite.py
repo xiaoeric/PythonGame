@@ -1,5 +1,6 @@
 import pygame
 import cv2
+import numpy as np
 
 
 class Sprite:
@@ -37,18 +38,15 @@ class Sprite:
 
     @staticmethod
     def merge_alpha(image, alpha_channel):
-        bgr = []
-        bgr.append(image[:, :, 0])
-        bgr.append(image[:, :, 1])
-        bgr.append(image[:, :, 2])
-        # print(len(bgr))
-        image_BGRA = cv2.merge((bgr[0], bgr[1], bgr[2], alpha_channel))
+        b_channel, g_channel, r_channel, _ = cv2.split(image)
+        alpha_channel = alpha_channel.astype(np.uint8)
+        image_BGRA = cv2.merge((b_channel, g_channel, r_channel, alpha_channel))
         return image_BGRA
 
     @staticmethod
     def cvimage_to_pygame(image):
         # Convert cvimage into a pygame surface
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        image = cv2.cvtColor(image, cv2.COLOR_BGRA2RGB)
         image = cv2.transpose(image)
         return pygame.surfarray.make_surface(image)
         # TODO: implement transparency using alpha channels
