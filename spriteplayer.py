@@ -2,6 +2,7 @@ from sprite import Sprite
 import cv2
 
 
+# deprecated
 class SpritePlayer(Sprite):
     sprites = []
 
