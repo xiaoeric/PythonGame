@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0362c4d3-ec71-4c9e-99dd-9c349bad3534" name="Default" comment="Refactored SpriteRow functionality to Sprite. SpriteRow is now deprecated.">
+    <list default="true" id="0362c4d3-ec71-4c9e-99dd-9c349bad3534" name="Default" comment="Fixed adding alpha channel issue (I think). BGRA image cannot convert to RGB for pygame image conversion.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite.py" beforeDir="false" afterPath="$PROJECT_DIR$/sprite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spriteplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/spriteplayer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spriterow.py" beforeDir="false" afterPath="$PROJECT_DIR$/spriterow.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,10 +51,11 @@
     <session id="1440428005">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.10" value="1" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -71,14 +70,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="825" />
-          <entry key="txt" value="88" />
+          <entry key="py" value="1164" />
+          <entry key="txt" value="446" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="88" />
-          <entry key="Python" value="825" />
+          <entry key="PLAIN_TEXT" value="446" />
+          <entry key="Python" value="1164" />
         </counts>
       </usages-collector>
     </session>
@@ -124,7 +123,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="476">
               <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -136,7 +135,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spriterow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="34">
               <caret line="3" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -148,7 +147,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spriteplayer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="527">
               <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
             </state>
           </provider>
@@ -158,13 +157,13 @@
         <entry file="file://$PROJECT_DIR$/sprite.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="50" column="54" lean-forward="true" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
+              <caret line="42" column="57" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <marker date="1535952987702" expanded="true" signature="40:45" ph="..." />
-                <marker date="1535952987702" expanded="true" signature="190:850" ph="..." />
-                <marker date="1535952987702" expanded="true" signature="823:850" ph="..." />
-                <marker date="1535952987702" expanded="true" signature="1137:1389" ph="..." />
+                <marker date="1536035253867" expanded="true" signature="59:64" ph="..." />
+                <marker date="1536035253867" expanded="true" signature="209:870" ph="..." />
+                <marker date="1536035253867" expanded="true" signature="843:870" ph="..." />
+                <marker date="1536035253867" expanded="true" signature="1157:1533" ph="..." />
               </folding>
             </state>
           </provider>
@@ -223,8 +222,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
-    <option name="width" value="588" />
-    <option name="height" value="909" />
+    <option name="width" value="590" />
+    <option name="height" value="910" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -232,7 +231,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -244,6 +242,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -445,7 +444,21 @@
       <option name="project" value="LOCAL" />
       <updated>1535692767743</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Trying to implement alpha channels for transparency. Assigning cv2.split() to a tuple of 3 fails and some weird error happens in converting cv2 images to pygame images.">
+      <created>1535954118780</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1535954118780</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Fixed adding alpha channel issue (I think). BGRA image cannot convert to RGB for pygame image conversion.">
+      <created>1535955305194</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1535955305194</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -461,7 +474,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21480502" />
@@ -542,7 +555,9 @@
     <MESSAGE value="Faceless horde now respawns when the horde is completely eliminated. Game briefly freezes for a while before the last Faceless disappears as the next horde is generated." />
     <MESSAGE value="Refactored update_daggers(). Game still freezes when generating new horde, but the last Faceless sprite will disappear." />
     <MESSAGE value="Refactored SpriteRow functionality to Sprite. SpriteRow is now deprecated." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored SpriteRow functionality to Sprite. SpriteRow is now deprecated." />
+    <MESSAGE value="Trying to implement alpha channels for transparency. Assigning cv2.split() to a tuple of 3 fails and some weird error happens in converting cv2 images to pygame images." />
+    <MESSAGE value="Fixed adding alpha channel issue (I think). BGRA image cannot convert to RGB for pygame image conversion." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed adding alpha channel issue (I think). BGRA image cannot convert to RGB for pygame image conversion." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/spritesheet.py" />
@@ -584,16 +599,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="476">
           <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -603,7 +611,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spriterow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
+        <state relative-caret-position="34">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -613,21 +621,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spriteplayer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="527">
           <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sprite.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="50" column="54" lean-forward="true" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
+          <caret line="42" column="57" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1535952987702" expanded="true" signature="40:45" ph="..." />
-            <marker date="1535952987702" expanded="true" signature="190:850" ph="..." />
-            <marker date="1535952987702" expanded="true" signature="823:850" ph="..." />
-            <marker date="1535952987702" expanded="true" signature="1137:1389" ph="..." />
+            <marker date="1536035253867" expanded="true" signature="59:64" ph="..." />
+            <marker date="1536035253867" expanded="true" signature="209:870" ph="..." />
+            <marker date="1536035253867" expanded="true" signature="843:870" ph="..." />
+            <marker date="1536035253867" expanded="true" signature="1157:1533" ph="..." />
           </folding>
         </state>
       </provider>
