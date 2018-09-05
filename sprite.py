@@ -10,15 +10,12 @@ class Sprite:
     @classmethod
     def from_coord(cls, col, row, width, height, gap, filename):
         sprites = []
-        alpha_channels = []
-        ss = cv2.imread(filename, cv2.IMREAD_UNCHANGED)  # spritesheet.spritesheet(filename)
+        ss = pygame.image.load(filename)
         for n in range(4):
             current_col = (col + n * (width + gap))
-            sprites.append(ss[row:row + height, current_col:current_col + width])
-
-            alpha_channels.append(ss[row:row + height, current_col + 128:current_col + 128 + width])
-
-            sprites[n] = cls.merge_alpha(sprites[n], alpha_channels[n])
+            rect = pygame.Rect(current_col, row, width, height)
+            sprites.append(ss.subsurface(rect))
+            # sprites.append(ss[row:row + height, current_col:current_col + width])
         for n in range(1, 3):
             sprites.insert(4, sprites[n])
 
@@ -29,21 +26,22 @@ class Sprite:
         sprites = []
 
     def get_list(self):
-        pygame_imgs = []
-        for image in self.sprites:
-            pygame_imgs.append(self.cvimage_to_pygame(image))
-        return pygame_imgs
+        return self.sprites
 
     def get_raw_list(self):
         return self.sprites
 
     @staticmethod
-    def merge_alpha(image, alpha_channel):
+    def merge_alpha(image, alpha_mask):
         b_channel, g_channel, r_channel, _ = cv2.split(image)
         # TODO: resolve assertion error by alpha blending properly
         # https://www.learnopencv.com/alpha-blending-using-opencv-cpp-python/
-        alpha_channel = alpha_channel.astype(float)/255
+
+        # Create alpha channel from the mask
+        _, alpha_channel = cv2.threshold(alpha_mask, 0, 255, cv2.THRESH_BINARY)
+
         image_BGRA = cv2.merge((b_channel, g_channel, r_channel, alpha_channel))
+        cv2.imshow("img", image_BGRA)
         return image_BGRA
 
     @staticmethod
@@ -51,4 +49,7 @@ class Sprite:
         # Convert cvimage into a pygame surface
         image = cv2.cvtColor(image, cv2.COLOR_BGRA2RGB)
         image = cv2.transpose(image)
-        return pygame.surfarray.make_surface(image)
+        surface = pygame.Surface(image.shape[:2], pygame.SRCALPHA)
+        pygame.surfarray.blit_array(surface, image)
+        surface = surface.convert_alpha()
+        return surface

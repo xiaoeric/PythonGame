@@ -1,6 +1,7 @@
 from spriterow import SpriteRow
 from spriteplayer import SpritePlayer
 from sprite import Sprite
+import pygame
 
 # debug
 # import time
