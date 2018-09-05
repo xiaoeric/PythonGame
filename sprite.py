@@ -22,8 +22,15 @@ class Sprite:
         return cls(sprites)
 
     @classmethod
-    def from_merge(cls, head, body):
+    def from_merge(cls, head_row, body_row):
         sprites = []
+        for n in range(len(body_row.get_list())):
+            head = head_row.get_list()[n]
+            body = body_row.get_list()[n]
+            body.blit(head, (6, 0))  # TODO: figure out where her head goes
+            sprites.append(body)
+
+        return cls(sprites)
 
     def get_list(self):
         return self.sprites
