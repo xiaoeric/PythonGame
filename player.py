@@ -17,19 +17,25 @@ class Player:
 
         # TODO: refactor for better organization
         # maid body sprite rows
-        self.stationary_body = Sprite.from_coord(7, 1660, 22, 24, 10, ss_maid)
-        self.moving_up_body = Sprite.from_coord(7, 1792, 22, 24, 10, ss_maid)
-        self.moving_down_sprite = Sprite.from_coord(7, 1760, 22, 24, 10, ss_maid)
-        self.moving_left_sprite = Sprite.from_coord(7, 1698, 22, 24, 10, ss_maid)
-        self.moving_right_sprite = Sprite.from_coord(7, 1730, 22, 24, 10, ss_maid)
+        self.stationary_body = Sprite.from_coord(7, 1660, 22, 24, 10, ss_maid, 6)
+        self.moving_up_body = Sprite.from_coord(7, 1792, 22, 24, 10, ss_maid, 4)
+        self.moving_down_body = Sprite.from_coord(7, 1760, 22, 24, 10, ss_maid, 4)
+        self.moving_left_body = Sprite.from_coord(7, 1698, 22, 24, 10, ss_maid, 4)
+        self.moving_right_body = Sprite.from_coord(7, 1730, 22, 24, 10, ss_maid, 4)
 
         # felicia head sprite rows
-        self.stationary_head = Sprite.from_coord(7, 8, 22, 15, 10, ss_felicia)  # 13, 8, 16, 15, 16
-        self.moving_up_head = Sprite.from_coord(7, 172, 22, 15, 10, ss_felicia)
+        self.stationary_head = Sprite.from_coord(7, 8, 22, 15, 10, ss_felicia, 6)  # 13, 8, 16, 15, 16
+        self.moving_up_head = Sprite.from_coord(7, 172, 22, 15, 10, ss_felicia, 4)
+        self.moving_down_head = Sprite.from_coord(7, 140, 22, 15, 10, ss_felicia, 4)
+        self.moving_left_head = Sprite.from_coord(7, 76, 22, 15, 10, ss_felicia, 4)
+        self.moving_right_head = Sprite.from_coord(7, 108, 22, 15, 10, ss_felicia, 4)
 
         # felicia maid sprite rows
-        self.stationary_sprite = Sprite.from_merge(self.stationary_head, self.stationary_body)
-        self.moving_up_sprite = Sprite.from_merge(self.moving_up_head, self.moving_up_body)
+        self.stationary_sprite = Sprite.from_merge(self.stationary_head, self.stationary_body, (0, 1))
+        self.moving_up_sprite = Sprite.from_merge(self.moving_up_head, self.moving_up_body, (0, 1))
+        self.moving_down_sprite = Sprite.from_merge(self.moving_down_head, self.moving_down_body, (0, 1))
+        self.moving_left_sprite = Sprite.from_merge(self.moving_left_head, self.moving_left_body, (0, 1))
+        self.moving_right_sprite = Sprite.from_merge(self.moving_right_head, self.moving_right_body, (0, 1))
 
         # stationary is default
         self.sprite_loop = self.stationary_sprite
@@ -105,7 +111,7 @@ class Player:
 
     def get_image(self):
         # gets current image in sprite row
-        return self.sprite_loop.get_list()[int(self.sprite_index) % 6]
+        return self.sprite_loop.get_list()[int(self.sprite_index) % self.sprite_loop.get_frames()]
 
     def blitme(self):
         # load images and rectangles onto screen
@@ -113,7 +119,7 @@ class Player:
 
         # debugging player sprite loop
         height = 96
-        for n in range(6):
+        for n in range(self.sprite_loop.get_frames()):
             sprite = pygame.transform.scale(self.sprite_loop.get_list()[n], (88, height))
             self.screen.blit(sprite, (n * sprite.get_size()[0], 0))
 

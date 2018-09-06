@@ -16,8 +16,8 @@ class Faceless(PySprite):
         ss_faceless = 'images/3DS - Fire Emblem Fates - Faceless.png'
 
         # faceless sprite row
-        self.moving_left = Sprite.from_coord(6, 39, 23, 27, 10, ss_faceless)
-        self.moving_right = Sprite.from_coord(4, 71, 23, 27, 9, ss_faceless)
+        self.moving_left = Sprite.from_coord(6, 39, 23, 27, 10, ss_faceless, 6)
+        self.moving_right = Sprite.from_coord(4, 71, 23, 27, 9, ss_faceless, 6)
 
         self.sprite_loop = self.moving_right
 

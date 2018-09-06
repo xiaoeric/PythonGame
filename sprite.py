@@ -2,12 +2,13 @@ import pygame
 
 
 class Sprite:
-    def __init__(self, sprites=[], alpha_masks=[]):
+    def __init__(self, frames, sprites=[], alpha_masks=[]):
         self.sprites = sprites
         self.alpha_masks = alpha_masks
+        self.frames = frames
 
     @classmethod
-    def from_coord(cls, col, row, width, height, gap, filename):
+    def from_coord(cls, col, row, width, height, gap, filename, frames):
         sprites = []
         alpha_masks = []
         ss = pygame.image.load(filename)
@@ -18,14 +19,14 @@ class Sprite:
 
             rect_alpha = pygame.Rect(current_col + 128, row, width + 1, height + 1)
             alpha_masks.append(ss.subsurface(rect_alpha))
-        for n in range(1, 3):
+        for n in range(1, frames - 3):
             sprites.insert(4, sprites[n])
             alpha_masks.insert(4, alpha_masks[n])
 
-        return cls(sprites, alpha_masks)
+        return cls(frames, sprites=sprites, alpha_masks=alpha_masks)
 
     @classmethod
-    def from_merge(cls, head_row, body_row):
+    def from_merge(cls, head_row, body_row, head_pos=(0, 0)):
         sprites = []
         for n in range(len(body_row.get_list())):
             # getting pair of head and body
@@ -40,8 +41,6 @@ class Sprite:
             head_alpha = head_row.get_alpha_masks()[n]
             head_top = cls.get_top(head, head_alpha)
 
-            head_pos = (0, 1)
-
             sprite.blit(head, head_pos)
             sprite.blit(body, (0, 0))
             sprite.blit(head_top, head_pos)
@@ -49,13 +48,16 @@ class Sprite:
 
             sprites.append(sprite)
 
-        return cls(sprites)
+        return cls(body_row.get_frames(), sprites=sprites)
 
     def get_list(self):
         return self.sprites
 
     def get_alpha_masks(self):
         return self.alpha_masks
+
+    def get_frames(self):
+        return self.frames
 
     @staticmethod
     def get_top(sprite, alpha_mask):
