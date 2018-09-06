@@ -28,13 +28,6 @@ class Sprite:
     def from_merge(cls, head_row, body_row):
         sprites = []
         for n in range(len(body_row.get_list())):
-            # TODO: get head and body sprites to layer properly
-            # layering should occur as follows:
-            # > body top
-            # > head top
-            # > body bottom
-            # > head bottom
-
             # getting pair of head and body
             head = head_row.get_list()[n]
             body = body_row.get_list()[n]
@@ -47,15 +40,13 @@ class Sprite:
             head_alpha = head_row.get_alpha_masks()[n]
             head_top = cls.get_top(head, head_alpha)
 
-            head_pos = (6, 1)
+            head_pos = (0, 1)
 
             sprite.blit(head, head_pos)
             sprite.blit(body, (0, 0))
             sprite.blit(head_top, head_pos)
             sprite.blit(body_top, (0, 0))
-            # TODO: figure out where her head goes
-            # her left eye goes on the same column as the brooch on her chest
-            # her chin ends right above that brooch
+
             sprites.append(sprite)
 
         return cls(sprites)

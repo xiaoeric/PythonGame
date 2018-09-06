@@ -18,16 +18,18 @@ class Player:
         # TODO: refactor for better organization
         # maid body sprite rows
         self.stationary_body = Sprite.from_coord(7, 1660, 22, 24, 10, ss_maid)
-        self.moving_up_sprite = Sprite.from_coord(7, 1792, 22, 24, 10, ss_maid)
+        self.moving_up_body = Sprite.from_coord(7, 1792, 22, 24, 10, ss_maid)
         self.moving_down_sprite = Sprite.from_coord(7, 1760, 22, 24, 10, ss_maid)
         self.moving_left_sprite = Sprite.from_coord(7, 1698, 22, 24, 10, ss_maid)
         self.moving_right_sprite = Sprite.from_coord(7, 1730, 22, 24, 10, ss_maid)
 
         # felicia head sprite rows
-        self.stationary_head = Sprite.from_coord(13, 8, 16, 15, 16, ss_felicia)
+        self.stationary_head = Sprite.from_coord(7, 8, 22, 15, 10, ss_felicia)  # 13, 8, 16, 15, 16
+        self.moving_up_head = Sprite.from_coord(7, 172, 22, 15, 10, ss_felicia)
 
         # felicia maid sprite rows
         self.stationary_sprite = Sprite.from_merge(self.stationary_head, self.stationary_body)
+        self.moving_up_sprite = Sprite.from_merge(self.moving_up_head, self.moving_up_body)
 
         # stationary is default
         self.sprite_loop = self.stationary_sprite
@@ -97,19 +99,22 @@ class Player:
 
         # iterating sprite animation
         self.sprite_index += self.sprite_iter_speed
-        if self.sprite_index >= 6:
+        if self.sprite_index >= 12:
             self.sprite_index = float(0)
         self.image = self.get_image()
 
     def get_image(self):
         # gets current image in sprite row
-        return self.sprite_loop.get_list()[int(self.sprite_index)]
+        return self.sprite_loop.get_list()[int(self.sprite_index) % 6]
 
     def blitme(self):
         # load images and rectangles onto screen
         self.screen.blit(self.image, self.rect)
 
         # debugging player sprite loop
+        height = 96
         for n in range(6):
-            sprite = pygame.transform.scale(self.sprite_loop.get_list()[n], (88, 96))
+            sprite = pygame.transform.scale(self.sprite_loop.get_list()[n], (88, height))
             self.screen.blit(sprite, (n * sprite.get_size()[0], 0))
+
+        self.screen.blit(pygame.transform.scale(self.image, (88, height)), (0, height))
