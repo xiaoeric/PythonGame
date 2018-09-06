@@ -12,7 +12,7 @@ Felicia the clumsy maid from Fire Emblem: Fates. She's the character you play as
 
 ##### Oh, I couldn't tell who the character was.
 
-Yeah, I suppose it would help if she wasn't headless. The issue still persists as of writing this (8/21/2018).
+~Yeah, I suppose it would help if she wasn't headless. The issue still persists as of writing this (8/21/2018).~ This issue has now been fixed (as of 9/5/2018) you have no reason not to recognize her now ha
 
 ### Is throwing daggers at Faceless hordes the only thing that's going to happen in the game?
 
