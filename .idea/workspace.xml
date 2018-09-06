@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0362c4d3-ec71-4c9e-99dd-9c349bad3534" name="Default" comment="Implemented sprite layering using pixel arrays. Maid staff flashes blue when looping through animation.">
+    <list default="true" id="0362c4d3-ec71-4c9e-99dd-9c349bad3534" name="Default" comment="Head and body parts layer properly but now Felicia has argyria methemoglobinemia.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite.py" beforeDir="false" afterPath="$PROJECT_DIR$/sprite.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,14 +73,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="4578" />
-          <entry key="txt" value="860" />
+          <entry key="py" value="4651" />
+          <entry key="txt" value="951" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="860" />
-          <entry key="Python" value="4578" />
+          <entry key="PLAIN_TEXT" value="951" />
+          <entry key="Python" value="4651" />
         </counts>
       </usages-collector>
     </session>
@@ -139,13 +138,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sprite.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="58" column="32" lean-forward="true" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
+            <state relative-caret-position="272">
+              <caret line="81" column="56" selection-start-line="81" selection-start-column="56" selection-end-line="81" selection-end-column="56" />
               <folding>
-                <marker date="1536206041683" expanded="true" signature="29:34" ph="..." />
-                <marker date="1536206041683" expanded="true" signature="234:2107" ph="..." />
-                <marker date="1536206041683" expanded="true" signature="890:2107" ph="..." />
-                <marker date="1536206041683" expanded="true" signature="2186:2224" ph="..." />
+                <marker date="1536207255087" expanded="true" signature="29:34" ph="..." />
+                <marker date="1536207255087" expanded="true" signature="234:2109" ph="..." />
+                <marker date="1536207255087" expanded="true" signature="890:2109" ph="..." />
+                <marker date="1536207255087" expanded="true" signature="2188:2226" ph="..." />
               </folding>
             </state>
           </provider>
@@ -459,7 +458,14 @@
       <option name="project" value="LOCAL" />
       <updated>1536188127662</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Head and body parts layer properly but now Felicia has argyria methemoglobinemia.">
+      <created>1536206327087</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1536206327087</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -492,7 +498,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49936628" weight="0.32992327" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49936628" weight="0.32992327" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49936628" weight="0.32907802" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49746513" weight="0.3286445" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5031686" side_tool="true" weight="0.3056266" />
@@ -562,7 +568,8 @@
     <MESSAGE value="FINALLY fixed sprite transparency issues. Plan to deprecate OpenCV dependencies." />
     <MESSAGE value="Implemented from_merge() to generate sprites from two other sprites." />
     <MESSAGE value="Implemented sprite layering using pixel arrays. Maid staff flashes blue when looping through animation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented sprite layering using pixel arrays. Maid staff flashes blue when looping through animation." />
+    <MESSAGE value="Head and body parts layer properly but now Felicia has argyria methemoglobinemia." />
+    <option name="LAST_COMMIT_MESSAGE" value="Head and body parts layer properly but now Felicia has argyria methemoglobinemia." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/spritesheet.py" />
@@ -637,13 +644,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sprite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="58" column="32" lean-forward="true" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
+        <state relative-caret-position="272">
+          <caret line="81" column="56" selection-start-line="81" selection-start-column="56" selection-end-line="81" selection-end-column="56" />
           <folding>
-            <marker date="1536206041683" expanded="true" signature="29:34" ph="..." />
-            <marker date="1536206041683" expanded="true" signature="234:2107" ph="..." />
-            <marker date="1536206041683" expanded="true" signature="890:2107" ph="..." />
-            <marker date="1536206041683" expanded="true" signature="2186:2224" ph="..." />
+            <marker date="1536207255087" expanded="true" signature="29:34" ph="..." />
+            <marker date="1536207255087" expanded="true" signature="234:2109" ph="..." />
+            <marker date="1536207255087" expanded="true" signature="890:2109" ph="..." />
+            <marker date="1536207255087" expanded="true" signature="2188:2226" ph="..." />
           </folding>
         </state>
       </provider>

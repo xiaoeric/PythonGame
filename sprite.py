@@ -79,7 +79,13 @@ class Sprite:
         for x in range(sprite_pxarr.shape[0]):
             for y in range(sprite_pxarr.shape[1]):
                 if alpha_mask_pxarr[x, y] == alpha_mask.map_rgb((136, 136, 136)):
-                    top_pxarr[x, y] = sprite_pxarr[x, y]
+                    px_color = sprite.unmap_rgb(sprite_pxarr[x, y])
+                    top_pxarr[x, y] = px_color
 
         top = top_pxarr.make_surface()
+
+        top_pxarr.close()
+        sprite_pxarr.close()
+        alpha_mask_pxarr.close()
+
         return top
