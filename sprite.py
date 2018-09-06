@@ -13,10 +13,10 @@ class Sprite:
         ss = pygame.image.load(filename)
         for n in range(4):
             current_col = (col + n * (width + gap))
-            rect = pygame.Rect(current_col, row, width, height)
+            rect = pygame.Rect(current_col, row, width + 1, height + 1)
             sprites.append(ss.subsurface(rect))
 
-            rect_alpha = pygame.Rect(current_col + 128, row, width, height)
+            rect_alpha = pygame.Rect(current_col + 128, row, width + 1, height + 1)
             alpha_masks.append(ss.subsurface(rect_alpha))
         for n in range(1, 3):
             sprites.insert(4, sprites[n])
@@ -34,16 +34,29 @@ class Sprite:
             # > head top
             # > body bottom
             # > head bottom
+
+            # getting pair of head and body
             head = head_row.get_list()[n]
             body = body_row.get_list()[n]
+
+            # creating blank surface to blit head and body layers
+            sprite = pygame.Surface(body.get_size(), pygame.SRCALPHA)
+
             body_alpha = body_row.get_alpha_masks()[n]
-            body.blit(head, (6, 1))
             body_top = cls.get_top(body, body_alpha)
-            body.blit(body_top, (0, 0))
+            head_alpha = head_row.get_alpha_masks()[n]
+            head_top = cls.get_top(head, head_alpha)
+
+            head_pos = (6, 1)
+
+            sprite.blit(head, head_pos)
+            sprite.blit(body, (0, 0))
+            sprite.blit(head_top, head_pos)
+            sprite.blit(body_top, (0, 0))
             # TODO: figure out where her head goes
             # her left eye goes on the same column as the brooch on her chest
             # her chin ends right above that brooch
-            sprites.append(body)
+            sprites.append(sprite)
 
         return cls(sprites)
 

@@ -1,5 +1,3 @@
-from spriterow import SpriteRow
-from spriteplayer import SpritePlayer
 from sprite import Sprite
 import pygame
 
@@ -110,3 +108,8 @@ class Player:
     def blitme(self):
         # load images and rectangles onto screen
         self.screen.blit(self.image, self.rect)
+
+        # debugging player sprite loop
+        for n in range(6):
+            sprite = pygame.transform.scale(self.sprite_loop.get_list()[n], (88, 96))
+            self.screen.blit(sprite, (n * sprite.get_size()[0], 0))
