@@ -27,6 +27,7 @@ class Player:
         self.stationary_head = Sprite.from_coord(7, 8, 22, 15, 10, ss_felicia, 6)  # 13, 8, 16, 15, 16
         self.moving_up_head = Sprite.from_coord(7, 172, 22, 15, 10, ss_felicia, 4)
         self.moving_down_head = Sprite.from_coord(7, 140, 22, 15, 10, ss_felicia, 4)
+        # TODO: redo coordinates for left head; third frame cuts some hair
         self.moving_left_head = Sprite.from_coord(7, 76, 22, 15, 10, ss_felicia, 4)
         self.moving_right_head = Sprite.from_coord(7, 108, 22, 15, 10, ss_felicia, 4)
 
@@ -50,7 +51,7 @@ class Player:
         self.image = self.get_image()
 
         # initialize rectangle of player
-        self.rect = self.image.get_rect()
+        self.rect = self.get_rect()
 
         # get screen rectangle for reference
         self.screen_rect = screen.get_rect()
@@ -112,6 +113,9 @@ class Player:
     def get_image(self):
         # gets current image in sprite row
         return self.sprite_loop.get_list()[int(self.sprite_index) % self.sprite_loop.get_frames()]
+
+    def get_rect(self):
+        return self.get_image().get_bounding_rect()
 
     def blitme(self):
         # load images and rectangles onto screen
