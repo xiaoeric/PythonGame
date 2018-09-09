@@ -4,7 +4,12 @@ from player import Player
 import game_functions as gf
 from pygame.sprite import Group
 from pygame.time import Clock
-from faceless import Faceless
+import enum
+
+
+class GameState(enum.Enum):
+    invasion = 0
+    shop = 1
 
 
 def run_game():
