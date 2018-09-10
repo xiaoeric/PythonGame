@@ -50,6 +50,27 @@ class Sprite:
 
         return cls(body_row.get_frames(), sprites=sprites)
 
+    @classmethod
+    def from_standard(cls, row, filename, frames):
+        sprites = []
+        alpha_masks = []
+        ss = pygame.image.load(filename)
+        for n in range(4):
+            current_col = (2 + n * 32)
+            rect = pygame.Rect(current_col, row, 32, 32)
+            sprite = ss.subsurface(rect)
+            bounding_rect = sprite.get_bounding_rect()
+            sprites.append(sprite.subsurface(bounding_rect))
+
+            rect_alpha = pygame.Rect(current_col + 128, row, 32, 32)
+            alpha_mask = ss.subsurface(rect_alpha)
+            alpha_masks.append(alpha_mask.subsurface(bounding_rect))
+        for n in range(1, frames - 3):
+            sprites.insert(4, sprites[n])
+            alpha_masks.insert(4, alpha_masks[n])
+
+        return cls(frames, sprites=sprites, alpha_masks=alpha_masks)
+
     def get_list(self):
         return self.sprites
 

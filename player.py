@@ -21,7 +21,8 @@ class Player:
         self.moving_up_body = Sprite.from_coord(7, 1792, 22, 24, 10, ss_maid, 4)
         self.moving_down_body = Sprite.from_coord(7, 1760, 22, 24, 10, ss_maid, 4)
         self.moving_left_body = Sprite.from_coord(7, 1698, 22, 24, 10, ss_maid, 4)
-        self.moving_right_body = Sprite.from_coord(7, 1730, 22, 24, 10, ss_maid, 4)
+        # 7, 1730, 22, 24, 10, ss_maid, 4
+        self.moving_right_body = Sprite.from_standard(1726, ss_maid, 4)
 
         # felicia head sprite rows
         self.stationary_head = Sprite.from_coord(7, 8, 22, 15, 10, ss_felicia, 6)  # 13, 8, 16, 15, 16
@@ -29,7 +30,8 @@ class Player:
         self.moving_down_head = Sprite.from_coord(7, 140, 22, 15, 10, ss_felicia, 4)
         # TODO: redo coordinates for left head; third frame cuts some hair
         self.moving_left_head = Sprite.from_coord(7, 76, 22, 15, 10, ss_felicia, 4)
-        self.moving_right_head = Sprite.from_coord(7, 108, 22, 15, 10, ss_felicia, 4)
+        # 7, 108, 22, 15, 10, ss_felicia, 4
+        self.moving_right_head = Sprite.from_standard(102, ss_felicia, 4)
 
         # felicia maid sprite rows
         self.stationary_sprite = Sprite.from_merge(self.stationary_head, self.stationary_body, (0, 1))
