@@ -2,45 +2,50 @@ import sys
 import pygame
 from dagger import Dagger
 from faceless import Faceless
+import game_state as gs
 
 
-def check_events(ai_settings, screen, player, daggers):
+def check_events(ai_settings, screen, player, daggers, game_state):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            check_keydown_events(event, ai_settings, screen, player, daggers)
+            check_keydown_events(event, ai_settings, screen, player, daggers, game_state)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, player)
 
 
-def check_keydown_events(event, ai_settings, screen, player, daggers):
+def check_keydown_events(event, ai_settings, screen, player, daggers, game_state):
     # Respond to key presses
-    if event.key == pygame.K_UP or event.key == pygame.K_w:
-        player.moving_up = True
-        # player.sprite_loop = player.moving_up_sprite
-        # debug
-        print('moving up')
-    if event.key == pygame.K_DOWN or event.key == pygame.K_s:
-        player.moving_down = True
-        # player.sprite_loop = player.moving_down_sprite
-        # debug
-        print('moving down')
-    if event.key == pygame.K_LEFT or event.key == pygame.K_a:
-        player.moving_left = True
-        # player.sprite_loop = player.moving_left_sprite
-        # debug
-        print('moving left')
-    if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
-        player.moving_right = True
-        # player.sprite_loop = player.moving_right_sprite
-        # debug
-        print('moving right')
-    if event.key == pygame.K_SPACE:
-        # Create a new dagger and add it to the daggers group
-        if len(daggers) < ai_settings.daggers_allowed:
-            new_dagger = Dagger(ai_settings, screen, player)
-            daggers.add(new_dagger)
+    if game_state.get_state() == gs.VICTORY:
+        # TODO: add victory animation here
+        game_state.set_state(gs.SHOP)
+    elif game_state.get_state() == gs.INVASION:
+        if event.key == pygame.K_UP or event.key == pygame.K_w:
+            player.moving_up = True
+            # player.sprite_loop = player.moving_up_sprite
+            # debug
+            print('moving up')
+        if event.key == pygame.K_DOWN or event.key == pygame.K_s:
+            player.moving_down = True
+            # player.sprite_loop = player.moving_down_sprite
+            # debug
+            print('moving down')
+        if event.key == pygame.K_LEFT or event.key == pygame.K_a:
+            player.moving_left = True
+            # player.sprite_loop = player.moving_left_sprite
+            # debug
+            print('moving left')
+        if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+            player.moving_right = True
+            # player.sprite_loop = player.moving_right_sprite
+            # debug
+            print('moving right')
+        if event.key == pygame.K_SPACE:
+            # Create a new dagger and add it to the daggers group
+            if len(daggers) < ai_settings.daggers_allowed:
+                new_dagger = Dagger(ai_settings, screen, player)
+                daggers.add(new_dagger)
 
 
 def check_keyup_events(event, player):
@@ -131,22 +136,23 @@ def update_horde(ai_settings, faceless_horde):
     faceless_horde.update()
 
 
-def update_daggers(ai_settings, screen, player, faceless_horde, daggers):
+def update_daggers(ai_settings, screen, player, faceless_horde, daggers, game_state):
     """Update position of daggers and get rid of old daggers"""
     # Get rid of daggers that have disappeared
     for dagger in daggers.copy():
         if dagger.rect.right <= 0:
             daggers.remove(dagger)
 
-    check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde, daggers)
+    check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde, daggers, game_state)
 
 
-def check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde, daggers):
+def check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde, daggers, game_state):
     """Respond to dagger-Faceless collisions"""
     if len(faceless_horde) == 0:
         #  Destroy existing daggers and create new horde
         daggers.empty()
-        create_horde(ai_settings, screen, player, faceless_horde)
+        game_state.set_state(gs.VICTORY)
+        # create_horde(ai_settings, screen, player, faceless_horde)
 
     # Checking for collisions after checking for horde generation will delay respawning
     # to the next loop, allowing the last Faceless sprite to disappear.

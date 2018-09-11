@@ -22,7 +22,8 @@ class Player:
         self.moving_down_body = Sprite.from_coord(7, 1760, 22, 24, 10, ss_maid, 4)
         self.moving_left_body = Sprite.from_coord(7, 1698, 22, 24, 10, ss_maid, 4)
         # 7, 1730, 22, 24, 10, ss_maid, 4
-        self.moving_right_body = Sprite.from_standard(1726, ss_maid, 4)
+        # 1726, ss_maid, 4
+        self.moving_right_body = Sprite.from_coord(7, 1730, 22, 24, 10, ss_maid, 4)
 
         # felicia head sprite rows
         self.stationary_head = Sprite.from_coord(7, 8, 22, 15, 10, ss_felicia, 6)  # 13, 8, 16, 15, 16
@@ -31,7 +32,8 @@ class Player:
         # TODO: redo coordinates for left head; third frame cuts some hair
         self.moving_left_head = Sprite.from_coord(7, 76, 22, 15, 10, ss_felicia, 4)
         # 7, 108, 22, 15, 10, ss_felicia, 4
-        self.moving_right_head = Sprite.from_standard(102, ss_felicia, 4)
+        # 102, ss_felicia, 4
+        self.moving_right_head = Sprite.from_coord(7, 108, 22, 15, 10, ss_felicia, 4)
 
         # felicia maid sprite rows
         self.stationary_sprite = Sprite.from_merge(self.stationary_head, self.stationary_body, (0, 1))
@@ -124,9 +126,13 @@ class Player:
         self.screen.blit(self.image, self.rect)
 
         # debugging player sprite loop
-        height = 96
-        for n in range(self.sprite_loop.get_frames()):
-            sprite = pygame.transform.scale(self.sprite_loop.get_list()[n], (88, height))
-            self.screen.blit(sprite, (n * sprite.get_size()[0], 0))
+        multiplier = 4
 
-        self.screen.blit(pygame.transform.scale(self.image, (88, height)), (0, height))
+        # height = None
+        # for n in range(self.sprite_loop.get_frames()):
+        #     sprite = pygame.transform.scale2x(pygame.transform.scale2x(self.sprite_loop.get_list()[n]))
+        #     if n == 0:
+        #         height = sprite.get_size()[1]
+        #     self.screen.blit(sprite, (n * sprite.get_size()[0], 0))
+        #
+        # self.screen.blit(pygame.transform.scale(self.image, (self.image.get_size()[0] * 4, height)), (0, height))

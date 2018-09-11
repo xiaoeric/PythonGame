@@ -60,11 +60,11 @@ class Sprite:
             rect = pygame.Rect(current_col, row, 32, 32)
             sprite = ss.subsurface(rect)
             bounding_rect = sprite.get_bounding_rect()
-            sprites.append(sprite.subsurface(bounding_rect))
+            sprites.append(sprite)
 
             rect_alpha = pygame.Rect(current_col + 128, row, 32, 32)
             alpha_mask = ss.subsurface(rect_alpha)
-            alpha_masks.append(alpha_mask.subsurface(bounding_rect))
+            alpha_masks.append(alpha_mask)
         for n in range(1, frames - 3):
             sprites.insert(4, sprites[n])
             alpha_masks.insert(4, alpha_masks[n])
