@@ -18,8 +18,8 @@ def check_events(ai_settings, screen, player, daggers, game_state):
 def check_keydown_events(event, ai_settings, screen, player, daggers, game_state):
     # Respond to key presses
     if game_state.get_state() == gs.VICTORY:
-        # TODO: add victory animation here
-        game_state.set_state(gs.SHOP)
+        # TODO: add victory closing animation here
+        game_state.set_state(gs.FADE_OUT)
     elif game_state.get_state() == gs.INVASION:
         if event.key == pygame.K_UP or event.key == pygame.K_w:
             player.moving_up = True
@@ -152,6 +152,7 @@ def check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde
         #  Destroy existing daggers and create new horde
         daggers.empty()
         game_state.set_state(gs.VICTORY)
+        # TODO: play victory opening animation
         # create_horde(ai_settings, screen, player, faceless_horde)
 
     # Checking for collisions after checking for horde generation will delay respawning
@@ -159,7 +160,7 @@ def check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde
     collisions = pygame.sprite.groupcollide(daggers, faceless_horde, True, True)
 
 
-def update_screen(ai_settings, screen, player, faceless_horde, daggers):
+def update_screen(ai_settings, screen, player, faceless_horde, daggers, fade_layer):
     screen.fill(ai_settings.bg_color)
     # Redraw all daggers behind player
     for dagger in daggers.sprites():
@@ -168,6 +169,8 @@ def update_screen(ai_settings, screen, player, faceless_horde, daggers):
     # for faceless in faceless_horde:
     #    faceless.loop_sprite()
     faceless_horde.draw(screen)
+
+    screen.blit(fade_layer, (0, 0))
 
     left = screen.get_rect().left
 

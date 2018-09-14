@@ -29,6 +29,11 @@ def run_game():
     # Create the horde of faceless
     gf.create_horde(ai_settings, screen, player, faceless_horde)
 
+    black_screen = pygame.Surface((ai_settings.screen_width, ai_settings.screen_height))
+    black_screen.fill((0, 0, 0))
+    black_screen.set_alpha(0)
+    fade_alpha = 0
+
     while True:
         clock.tick(ai_settings.fps)
         # dt = clock.tick()
@@ -36,7 +41,8 @@ def run_game():
 
         gf.check_events(ai_settings, screen, player, daggers, game_state)
 
-        if game_state.get_state() == gs.INVASION or game_state.get_state() == gs.VICTORY:
+        if game_state.get_state() == gs.INVASION or game_state.get_state() == gs.VICTORY \
+                or game_state.get_state() == gs.FADE_OUT:
             player.update(ai_settings)
 
         if game_state.get_state() == gs.INVASION:
@@ -44,7 +50,12 @@ def run_game():
             gf.update_daggers(ai_settings, screen, player, faceless_horde, daggers, game_state)
             gf.update_horde(ai_settings, faceless_horde)
 
-        gf.update_screen(ai_settings, screen, player, faceless_horde, daggers)
+        if game_state.get_state() == gs.FADE_OUT:
+            if fade_alpha < 255:
+                fade_alpha += ai_settings.fade_speed
+                black_screen.set_alpha(fade_alpha)
+
+        gf.update_screen(ai_settings, screen, player, faceless_horde, daggers, black_screen)
 
         pygame.display.set_caption("FPS: %i    Game State: %s" % (clock.get_fps(), game_state.get_name()))
 
