@@ -2,25 +2,26 @@ import sys
 import pygame
 from dagger import Dagger
 from faceless import Faceless
-import game_state as gs
+from game_state import GameState as GS
+from game_state import ScreenState as ScS
 
 
-def check_events(ai_settings, screen, player, daggers, game_state):
+def check_events(ai_settings, screen, player, daggers, game_state, screen_state):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            check_keydown_events(event, ai_settings, screen, player, daggers, game_state)
+            check_keydown_events(event, ai_settings, screen, player, daggers, game_state, screen_state)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, player)
 
 
-def check_keydown_events(event, ai_settings, screen, player, daggers, game_state):
+def check_keydown_events(event, ai_settings, screen, player, daggers, game_state, screen_state):
     # Respond to key presses
-    if game_state.get_state() == gs.VICTORY:
+    if game_state.get_state() == GS.VICTORY:
         # TODO: add victory closing animation here
-        game_state.set_state(gs.FADE_OUT)
-    elif game_state.get_state() == gs.INVASION:
+        screen_state.set_state(ScS.FADE_OUT)
+    elif game_state.get_state() == GS.INVASION:
         if event.key == pygame.K_UP or event.key == pygame.K_w:
             player.moving_up = True
             # player.sprite_loop = player.moving_up_sprite
@@ -151,7 +152,7 @@ def check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde
     if len(faceless_horde) == 0:
         #  Destroy existing daggers and create new horde
         daggers.empty()
-        game_state.set_state(gs.VICTORY)
+        game_state.set_state(GS.VICTORY)
         # TODO: play victory opening animation
         # create_horde(ai_settings, screen, player, faceless_horde)
 
@@ -160,17 +161,19 @@ def check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde
     collisions = pygame.sprite.groupcollide(daggers, faceless_horde, True, True)
 
 
-def update_screen(ai_settings, screen, player, faceless_horde, daggers, fade_layer):
+def update_screen(ai_settings, screen, player, faceless_horde, daggers, fade_layer, game_state, screen_state):
     screen.fill(ai_settings.bg_color)
     # Redraw all daggers behind player
     for dagger in daggers.sprites():
         dagger.draw_dagger()
+
     player.blitme()
     # for faceless in faceless_horde:
     #    faceless.loop_sprite()
     faceless_horde.draw(screen)
 
-    screen.blit(fade_layer, (0, 0))
+    if screen_state.get_state() == ScS.FADE_OUT or screen_state.get_state() == ScS.FADE_IN:
+        screen.blit(fade_layer, (0, 0))
 
     left = screen.get_rect().left
 

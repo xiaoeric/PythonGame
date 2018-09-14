@@ -4,7 +4,8 @@ from player import Player
 import game_functions as gf
 from pygame.sprite import Group
 from pygame.time import Clock
-import game_state as gs
+from game_state import GameState as GS
+from game_state import ScreenState as ScS
 
 
 def run_game():
@@ -13,7 +14,8 @@ def run_game():
     pygame.init()
     pygame.font.init()
 
-    game_state = gs.GameState(gs.INVASION)
+    game_state = GS(GS.INVASION)
+    screen_state = ScS(ScS.NONE)
 
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
@@ -39,25 +41,37 @@ def run_game():
         # dt = clock.tick()
         # print(dt)
 
-        gf.check_events(ai_settings, screen, player, daggers, game_state)
+        gf.check_events(ai_settings, screen, player, daggers, game_state, screen_state)
 
-        if game_state.get_state() == gs.INVASION or game_state.get_state() == gs.VICTORY \
-                or game_state.get_state() == gs.FADE_OUT:
+        if game_state.get_state() == GS.INVASION or game_state.get_state() == GS.VICTORY:
             player.update(ai_settings)
 
-        if game_state.get_state() == gs.INVASION:
+        if game_state.get_state() == GS.INVASION:
             daggers.update()
             gf.update_daggers(ai_settings, screen, player, faceless_horde, daggers, game_state)
             gf.update_horde(ai_settings, faceless_horde)
 
-        if game_state.get_state() == gs.FADE_OUT:
+        if screen_state.get_state() == ScS.FADE_OUT:
             if fade_alpha < 255:
                 fade_alpha += ai_settings.fade_speed
                 black_screen.set_alpha(fade_alpha)
+            elif fade_alpha >= 255:
+                if game_state.get_state() == GS.VICTORY:
+                    game_state.set_state(GS.SHOP)
+                elif game_state.get_state() == GS.SHOP:
+                    game_state.set_state(GS.INVASION)
+                screen_state.set_state(ScS.FADE_IN)
 
-        gf.update_screen(ai_settings, screen, player, faceless_horde, daggers, black_screen)
+        if screen_state.get_state() == ScS.FADE_IN:
+            if fade_alpha > 0:
+                fade_alpha -= ai_settings.fade_speed
+                black_screen.set_alpha(fade_alpha)
 
-        pygame.display.set_caption("FPS: %i    Game State: %s" % (clock.get_fps(), game_state.get_name()))
+        gf.update_screen(ai_settings, screen, player, faceless_horde, daggers, black_screen, game_state, screen_state)
+
+        pygame.display.set_caption("FPS: %i    Game State: %s    Screen State: %s" % (clock.get_fps(),
+                                                                                      game_state.get_name(),
+                                                                                      screen_state.get_name()))
 
 
 run_game()
