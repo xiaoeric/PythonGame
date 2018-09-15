@@ -36,6 +36,11 @@ def run_game():
     black_screen.set_alpha(0)
     fade_alpha = 0
 
+    invasion_filename = 'images/Invasion Background.png'
+    invasion_background = pygame.image.load(invasion_filename)
+    invasion_background = pygame.transform.scale(invasion_background, (ai_settings.screen_width,
+                                                                       ai_settings.screen_height))
+
     shop_filename = 'images/Awakening Support Background.jpg'
     shop_background = pygame.image.load(shop_filename)
     shop_background = pygame.transform.scale(shop_background, (ai_settings.screen_width, ai_settings.screen_height))
@@ -73,7 +78,7 @@ def run_game():
             elif fade_alpha <= 0:
                 screen_state.set_state(ScS.NONE)
 
-        gf.update_screen(ai_settings, screen, player, faceless_horde, daggers, black_screen, shop_background,
+        gf.update_screen(ai_settings, screen, player, faceless_horde, daggers, black_screen, invasion_background, shop_background,
                          game_state, screen_state)
 
         pygame.display.set_caption("FPS: %i    Game State: %s    Screen State: %s" % (clock.get_fps(),
