@@ -14,7 +14,7 @@ class Settings:
         # Dagger settings
         self.dagger_speed_factor = 9 * 60.0 / self.fps
         self.dagger_width = 15
-        self.dagger_height = 3
+        self.dagger_height = 300
         self.dagger_color = 60, 60, 60
         self.daggers_allowed = 3
 

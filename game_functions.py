@@ -161,16 +161,23 @@ def check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde
     collisions = pygame.sprite.groupcollide(daggers, faceless_horde, True, True)
 
 
-def update_screen(ai_settings, screen, player, faceless_horde, daggers, fade_layer, game_state, screen_state):
+def update_screen(ai_settings, screen, player, faceless_horde, daggers, fade_layer, shop_screen, game_state, screen_state):
     screen.fill(ai_settings.bg_color)
-    # Redraw all daggers behind player
-    for dagger in daggers.sprites():
-        dagger.draw_dagger()
 
-    player.blitme()
-    # for faceless in faceless_horde:
-    #    faceless.loop_sprite()
-    faceless_horde.draw(screen)
+    if game_state.get_state() == GS.INVASION:
+        # Redraw all daggers behind player
+        for dagger in daggers.sprites():
+            dagger.draw_dagger()
+
+        # for faceless in faceless_horde:
+        #    faceless.loop_sprite()
+        faceless_horde.draw(screen)
+
+    if game_state.get_state() == GS.INVASION or game_state.get_state() == GS.VICTORY:
+        player.blitme()
+
+    if game_state.get_state() == GS.SHOP:
+        screen.blit(shop_screen, (0, 0))
 
     if screen_state.get_state() == ScS.FADE_OUT or screen_state.get_state() == ScS.FADE_IN:
         screen.blit(fade_layer, (0, 0))

@@ -12,6 +12,8 @@ class State(ABC):
     def set_state(self, state):
         self.state = state
 
+    # TODO: refactor state comparisons to one method
+
     def get_name(self):
         return self.state_names.get(self.state, 'Invalid state')
 
