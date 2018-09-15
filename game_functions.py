@@ -162,7 +162,7 @@ def check_dagger_faceless_collisions(ai_settings, screen, player, faceless_horde
 
 
 def update_screen(ai_settings, screen, player, faceless_horde, daggers, fade_layer, invasion_background,
-                  shop_screen, game_state, screen_state):
+                  shop_screen, shop_menu, game_state, screen_state):
     screen.fill(ai_settings.bg_color)
 
     if game_state.get_state() == GS.INVASION or game_state.get_state() == GS.VICTORY:
@@ -182,6 +182,7 @@ def update_screen(ai_settings, screen, player, faceless_horde, daggers, fade_lay
 
     if game_state.get_state() == GS.SHOP:
         screen.blit(shop_screen, (0, 0))
+        shop_menu.update_screen(screen)
 
     if screen_state.get_state() == ScS.FADE_OUT or screen_state.get_state() == ScS.FADE_IN:
         screen.blit(fade_layer, (0, 0))

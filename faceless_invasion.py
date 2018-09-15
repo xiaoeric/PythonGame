@@ -6,6 +6,7 @@ from pygame.sprite import Group
 from pygame.time import Clock
 from game_state import GameState as GS
 from game_state import ScreenState as ScS
+from shop_menu import ShopMenu
 
 
 def run_game():
@@ -45,6 +46,8 @@ def run_game():
     shop_background = pygame.image.load(shop_filename)
     shop_background = pygame.transform.scale(shop_background, (ai_settings.screen_width, ai_settings.screen_height))
 
+    shop_menu = ShopMenu()
+
     while True:
         clock.tick(ai_settings.fps)
         # dt = clock.tick()
@@ -78,8 +81,8 @@ def run_game():
             elif fade_alpha <= 0:
                 screen_state.set_state(ScS.NONE)
 
-        gf.update_screen(ai_settings, screen, player, faceless_horde, daggers, black_screen, invasion_background, shop_background,
-                         game_state, screen_state)
+        gf.update_screen(ai_settings, screen, player, faceless_horde, daggers, black_screen, invasion_background,
+                         shop_background, shop_menu, game_state, screen_state)
 
         pygame.display.set_caption("FPS: %i    Game State: %s    Screen State: %s" % (clock.get_fps(),
                                                                                       game_state.get_name(),
