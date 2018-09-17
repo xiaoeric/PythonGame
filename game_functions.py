@@ -6,17 +6,17 @@ from game_state import GameState as GS
 from game_state import ScreenState as ScS
 
 
-def check_events(ai_settings, screen, player, daggers, game_state, screen_state):
+def check_events(ai_settings, screen, player, daggers, game_state, screen_state, shop_menu):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            check_keydown_events(event, ai_settings, screen, player, daggers, game_state, screen_state)
+            check_keydown_events(event, ai_settings, screen, player, daggers, game_state, screen_state, shop_menu)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, player)
 
 
-def check_keydown_events(event, ai_settings, screen, player, daggers, game_state, screen_state):
+def check_keydown_events(event, ai_settings, screen, player, daggers, game_state, screen_state, shop_menu):
     # Respond to key presses
     if game_state.get_state() == GS.VICTORY:
         # TODO: add victory closing animation here
@@ -47,6 +47,11 @@ def check_keydown_events(event, ai_settings, screen, player, daggers, game_state
             if len(daggers) < ai_settings.daggers_allowed:
                 new_dagger = Dagger(ai_settings, screen, player)
                 daggers.add(new_dagger)
+    elif game_state.get_state() == GS.SHOP:
+        if event.key == pygame.K_UP or event.key == pygame.K_w:
+            shop_menu.update_selection_rev()
+        if event.key == pygame.K_DOWN or event.key == pygame.K_s:
+            shop_menu.update_selection()
 
 
 def check_keyup_events(event, player):

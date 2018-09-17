@@ -53,7 +53,7 @@ def run_game():
         # dt = clock.tick()
         # print(dt)
 
-        gf.check_events(ai_settings, screen, player, daggers, game_state, screen_state)
+        gf.check_events(ai_settings, screen, player, daggers, game_state, screen_state, shop_menu)
 
         if game_state.get_state() == GS.INVASION or game_state.get_state() == GS.VICTORY:
             player.update(ai_settings)
