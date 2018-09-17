@@ -46,7 +46,7 @@ def run_game():
     shop_background = pygame.image.load(shop_filename)
     shop_background = pygame.transform.scale(shop_background, (ai_settings.screen_width, ai_settings.screen_height))
 
-    shop_menu = ShopMenu()
+    shop_menu = ShopMenu(screen_state)
 
     while True:
         clock.tick(ai_settings.fps)
@@ -72,6 +72,7 @@ def run_game():
                     game_state.set_state(GS.SHOP)
                 elif game_state.get_state() == GS.SHOP:
                     game_state.set_state(GS.INVASION)
+                    gf.create_horde(ai_settings, screen, player, faceless_horde)
                 screen_state.set_state(ScS.FADE_IN)
 
         if screen_state.get_state() == ScS.FADE_IN:

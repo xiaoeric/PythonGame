@@ -48,10 +48,14 @@ def check_keydown_events(event, ai_settings, screen, player, daggers, game_state
                 new_dagger = Dagger(ai_settings, screen, player)
                 daggers.add(new_dagger)
     elif game_state.get_state() == GS.SHOP:
-        if event.key == pygame.K_UP or event.key == pygame.K_w:
-            shop_menu.update_selection_rev()
-        if event.key == pygame.K_DOWN or event.key == pygame.K_s:
-            shop_menu.update_selection()
+        if event.key == pygame.K_RETURN:
+            shop_menu.get_selections()[shop_menu.get_current_selection()].select()
+        else:
+            if event.key == pygame.K_UP or event.key == pygame.K_w:
+                shop_menu.update_selection_rev()
+            if event.key == pygame.K_DOWN or event.key == pygame.K_s:
+                shop_menu.update_selection()
+
 
 
 def check_keyup_events(event, player):
