@@ -7,6 +7,7 @@ from pygame.time import Clock
 from game_state import GameState as GS
 from game_state import ScreenState as ScS
 from shop_menu import ShopMenu
+from pygame.font import Font
 
 
 def run_game():
@@ -46,7 +47,7 @@ def run_game():
     shop_background = pygame.image.load(shop_filename)
     shop_background = pygame.transform.scale(shop_background, (ai_settings.screen_width, ai_settings.screen_height))
 
-    shop_menu = ShopMenu(screen_state)
+    shop_menu = ShopMenu(screen_state, ai_settings)
 
     while True:
         clock.tick(ai_settings.fps)

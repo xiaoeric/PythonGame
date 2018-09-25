@@ -1,3 +1,7 @@
+import pygame
+from pygame.font import Font
+
+
 class Settings:
 
     def __init__(self):
@@ -14,7 +18,7 @@ class Settings:
         # Dagger settings
         self.dagger_speed_factor = 9 * 60.0 / self.fps
         self.dagger_width = 15
-        self.dagger_height = 300
+        self.dagger_height = 3
         self.dagger_color = 60, 60, 60
         self.daggers_allowed = 3
 
@@ -23,3 +27,7 @@ class Settings:
         self.horde_crawl_speed = 10 * 60.0 / self.fps
         # horde direction of 1 represents down; -1 represents up
         self.horde_direction = 1
+
+        self.font_name = pygame.font.get_default_font()
+        self.font_size = 18
+        self.font = Font(self.font_name, self.font_size)

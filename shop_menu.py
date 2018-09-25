@@ -4,25 +4,25 @@ from selection_button import SelectionButton as Selection
 
 
 class ShopMenu:
-    def __init__(self, screen_state):
+    def __init__(self, screen_state, ai_settings):
         menu_filename = 'images/3DS - Fire Emblem Fates - Support Conversation Text Boxes.png'
         self.menu_source = pygame.image.load(menu_filename)
         self.selections = []
         self.current_selection = 0
 
-        self.create_selection()
-        self.create_selection()
+        self.create_selection(ai_settings)
+        self.create_selection(ai_settings, text='Test')
 
         # exits shop and returns to invasion
-        self.create_selection(lambda: screen_state.set_state(ScS.FADE_OUT))
+        self.create_selection(ai_settings, action=lambda: screen_state.set_state(ScS.FADE_OUT), text='Continue')
 
         selection_arrow = self.menu_source.subsurface(pygame.Rect(315, 176, 16, 16))
         self.selection_arrow = pygame.transform.rotate(selection_arrow, 90)
 
-    def create_selection(self, action=None):
+    def create_selection(self, ai_settings, action=None, text=None):
         rect = pygame.Rect(2, 176, 197, 56)
         surface = self.menu_source.subsurface(rect)
-        selection = Selection(surface, action)
+        selection = Selection(surface, ai_settings, action, text)
         self.selections.append(selection)
         return selection
 
@@ -49,6 +49,7 @@ class ShopMenu:
         y = 50
         for n in range(len(self.selections)):
             screen.blit(self.selections[n].get_surface(), (x, y))
+            self.selections[n].render_text(screen, (x, y))
             if self.current_selection == n:
                 arrow_rect = self.selection_arrow.get_rect()
                 button_rect = self.selections[n].get_surface().get_rect()
