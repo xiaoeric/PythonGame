@@ -10,8 +10,8 @@ class ShopMenu:
         self.selections = []
         self.current_selection = 0
 
-        self.create_selection(ai_settings)
-        self.create_selection(ai_settings, text='Test')
+        self.create_selection(ai_settings, text='Test 1')
+        self.create_selection(ai_settings, text='Test 2')
 
         # exits shop and returns to invasion
         self.create_selection(ai_settings, action=lambda: screen_state.set_state(ScS.FADE_OUT), text='Continue')
