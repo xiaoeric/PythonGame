@@ -20,6 +20,7 @@ class ShopMenu:
         self.selection_arrow = pygame.transform.rotate(selection_arrow, 90)
 
     def create_selection(self, ai_settings, action=None, text=None):
+        """Creates a new selection box in the menu"""
         rect = pygame.Rect(2, 176, 197, 56)
         surface = self.menu_source.subsurface(rect)
         selection = Selection(surface, ai_settings, action, text)
@@ -27,24 +28,26 @@ class ShopMenu:
         return selection
 
     def update_selection(self):
-        if self.current_selection < len(self.selections) - 1:
-            self.current_selection += 1
-        else:
-            self.current_selection = 0
+        """Moves to the next selection in the menu forwards"""
+        self.current_selection = (self.current_selection + 1) % len(self.selections)
 
     def update_selection_rev(self):
+        """Moves to the next selection in the menu backwards"""
         if self.current_selection > 0:
             self.current_selection -= 1
         else:
             self.current_selection = len(self.selections) - 1
 
     def get_selections(self):
+        """Returns array of selections"""
         return self.selections
 
     def get_current_selection(self):
+        """Returns the current selection"""
         return self.current_selection
 
     def update_screen(self, screen):
+        """Updates the menu on the screen"""
         x = 350
         y = 50
         for n in range(len(self.selections)):

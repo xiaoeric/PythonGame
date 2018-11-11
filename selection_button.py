@@ -7,13 +7,16 @@ class SelectionButton:
         self.text_surf = None
 
     def get_surface(self):
+        """Returns the surface the button is represented by"""
         return self.surface
 
     def select(self):
+        """Performs the button's action when it is selected"""
         if self.action is not None:
             self.action()
 
     def render_text(self, screen, coords):
+        """Renders text centered on the button surface"""
         if self.text is not None:
             self.text_surf = self.ai_settings.font.render(self.text, False, (0, 0, 0))
             text_half_width = self.text_surf.get_width() / 2.0
